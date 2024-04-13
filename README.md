@@ -28,7 +28,7 @@ https://appnox-assignment-lac.vercel.app/
 
 - Mobile View
 
- <img width="391" alt="Screenshot 2024-04-13 at 6 24 34 PM" src="https://github.com/sarthakastic/crayon-server/assets/72138026/09156efd-92bd-4715-85d7-5b62f1e04259">
+<img width="391" alt="Screenshot 2024-04-13 at 6 40 27 PM" src="https://github.com/sarthakastic/crayon-server/assets/72138026/732b5593-1359-4b89-a985-7085b492c862">
 <img width="391" alt="Screenshot 2024-04-13 at 6 25 35 PM" src="https://github.com/sarthakastic/crayon-server/assets/72138026/15cfae45-332c-46f0-913f-6d53e9256928">
 <img width="391" alt="Screenshot 2024-04-13 at 6 25 49 PM" src="https://github.com/sarthakastic/crayon-server/assets/72138026/eb13568f-3245-4473-8838-77708a1c9b48">
 
