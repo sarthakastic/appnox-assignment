@@ -19,7 +19,7 @@ const SearchArtist: React.FC = () => {
         name.toLowerCase().includes(searchQuery.toLowerCase())
       );
       setMatchedNames(filteredNames || []);
-    }, 500); // Debounce time
+    }, 500);
 
     return () => clearTimeout(timeoutId);
   }, [searchQuery]);
