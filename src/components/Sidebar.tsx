@@ -9,7 +9,6 @@ import { useLocation } from "react-router-dom";
 
 const Sidebar = () => {
   const location = useLocation();
-  console.log(location.pathname);
 
   return (
     <div className=" h-screen w-16  flex flex-col justify-between items-center px-5 py-2 border-r">
