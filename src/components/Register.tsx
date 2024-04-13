@@ -1,7 +1,5 @@
-"use client";
-
 // Native Imports
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 
 // Dependency Imports
 import { z } from "zod";
@@ -10,25 +8,22 @@ import { SubmitHandler, useForm } from "react-hook-form";
 
 // Redux Imports
 
-import { SignUpSchema } from "../utils/validationSchema";
+import { RegisterSchema } from "../utils/validationSchema";
+import ImageUploader from "./ImageUploader";
 
-type SignUpFields = z.infer<typeof SignUpSchema>;
+type SignUpFields = z.infer<typeof RegisterSchema>;
 
-const ContactUs = () => {
-  const [showPassword, setShowPassword] = useState<boolean>(false);
-
-  const [showError, setShowError] = useState<string>("");
-
+const Register = ({ setIsSubmitted }: { setIsSubmitted: any }) => {
   const {
     register,
     handleSubmit,
-    setError,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm<SignUpFields>({
-    resolver: zodResolver(SignUpSchema),
+    resolver: zodResolver(RegisterSchema),
   });
 
   const [phoneNumber, setPhoneNumber] = useState("");
+  const [images, setImages] = useState<any>([]);
 
   const formatPhoneNumber = (value: any) => {
     // Remove all non-numeric characters from the input value
@@ -53,11 +48,12 @@ const ContactUs = () => {
   };
 
   const onSubmit: SubmitHandler<SignUpFields> = (data) => {
-    console.log(data);
+    console.log({ ...data, ...images });
+    setIsSubmitted(true);
   };
 
   return (
-    <div className="w-full h-full  flex flex-col items-center justify-center gap-8 ">
+    <div className="w-full h-full  flex flex-col items-center justify-center gap-8 p-10 ">
       {/* Title */}
       <div className="align-middle text-center">
         <h4 className="my-2 md:mx-16 ">Contattaci</h4>
@@ -65,18 +61,18 @@ const ContactUs = () => {
 
       {/* Input Form */}
       <form
-        className="flex flex-col w-full md:w-1/2 "
+        className="flex flex-col w-full md:w-4/5   "
         onSubmit={handleSubmit(onSubmit)}
       >
-        <div className="w-full flex border border-black rounded-lg px-4 py-2 my-2">
+        <div className="w-full flex flex-col md:flex-row gap-4 my-2  ">
           <input
-            className="w-full ml-5 focus:outline-none"
+            className="md:w-4/5 h-10 focus:outline-none bg-[#F6F6F6] rounded-lg  px-4 "
             {...register("name")}
             type="text"
             placeholder="Nome"
           />
           <input
-            className="w-full ml-5 focus:outline-none"
+            className="md:w-4/5 h-10 focus:outline-none bg-[#F6F6F6] rounded-lg  px-4 "
             {...register("lastname")}
             type="text"
             placeholder="Cognome"
@@ -85,72 +81,76 @@ const ContactUs = () => {
         {errors.name && (
           <div className="text-red-500">{errors.name.message}</div>
         )}
-        <div className="w-full flex border border-black rounded-lg px-4 py-2 my-2">
-          <div className="w-full flex border border-black rounded-lg px-4 py-2 my-2">
-            <input
-              className="w-full ml-5 focus:outline-none"
-              {...register("email")}
-              type="email"
-              placeholder="Email"
-            />
-          </div>
+        {errors.lastname && (
+          <div className="text-red-500">{errors.lastname.message}</div>
+        )}
+        <div className="w-full flex flex-col md:flex-row gap-4  my-2 ">
+          <input
+            className="w-full h-10 focus:outline-none bg-[#F6F6F6] rounded-lg px-4"
+            {...register("email")}
+            type="email"
+            placeholder="Email"
+          />
 
           <input
-            className="w-full ml-5 focus:outline-none"
+            className="w-full h-10 focus:outline-none bg-[#F6F6F6] rounded-lg px-4"
             {...register("phone")}
             value={phoneNumber}
             onChange={handleChange}
             type="text"
-            maxLength={11} // including spaces
-            placeholder="Enter Phone Number"
+            maxLength={11}
+            placeholder="Telefono"
           />
         </div>
-        {errors.phone && (
-          <div className="text-red-500">{errors.phone.message}</div>
-        )}
 
         {errors.email && (
           <div className="text-red-500">{errors.email.message}</div>
         )}
-        <div className="w-full flex border border-black items-center rounded-lg px-4 py-2 mt-2">
+        {errors.phone && (
+          <div className="text-red-500">{errors.phone.message}</div>
+        )}
+
+        <div className="w-full flex bg-[#F6F6F6] items-center rounded-lg px-4 my-2 ">
           <select
-            className="w-full ml-5 focus:outline-none"
+            className="w-full h-10 focus:outline-none bg-[#F6F6F6] rounded-lg"
             {...register("dropdownData")}
           >
             {" "}
-            <option value="">Select an option</option>
+            <option value="">Richiesta Valutazionen</option>
             <option value="option1">Option 1</option>
             <option value="option2">Option 2</option>
             <option value="option3">Option 3</option>
           </select>
         </div>
-        {showError && (
-          <p className=" text-red-500 w-full text-center "> {showError}</p>
-        )}
+
         {errors.dropdownData && (
           <div className="text-red-500">{errors.dropdownData.message}</div>
         )}
-        {errors.lastname && (
-          <div className="text-red-500">{errors.lastname.message}</div>
-        )}
 
         <textarea
+          className="bg-[#F6F6F6] px-4 my-2 mb-4 rounded-lg "
           {...register("additionalData")}
-          placeholder="Type something..."
+          placeholder="Come possiamo aiutarla?"
           rows={4}
           cols={50}
         />
 
-        {errors.root && (
-          <div className="text-red-500">{errors.root.message}</div>
-        )}
-        <button type="submit">Submit</button>
         {errors.additionalData && (
           <div className="text-red-500">{errors.additionalData.message}</div>
         )}
+        {errors.root && (
+          <div className="text-red-500">{errors.root.message}</div>
+        )}
+        <ImageUploader images={images} setImages={setImages} />
+        <button
+          type="submit"
+          className="bg-black text-white rounded-full w-full p-2 mt-10 "
+        >
+          INVIA MESSAGGIO
+        </button>
       </form>
     </div>
   );
 };
 
-export default ContactUs;
+export default Register;

@@ -9,7 +9,7 @@ import Results from "./routes/Results.tsx";
 
 const router = createBrowserRouter([
   {
-    path: "/path",
+    path: "/",
     element: <App />,
     errorElement: <div>404 not found go back to home</div>,
   },

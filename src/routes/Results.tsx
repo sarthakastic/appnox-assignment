@@ -1,18 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import imagesData from "../utils/artistImages.json";
 import ProductCard from "../components/ProductCard";
 import Sidebar from "../components/Sidebar";
 import Navbar from "../components/Navbar";
 
 const Results = () => {
+  const [name, setName] = useState("");
+
+  useEffect(() => {
+    const storedName = localStorage.getItem("name");
+    if (typeof storedName === "string") {
+      setName(storedName);
+    }
+  }, []);
+
   return (
     <div className="flex">
-      <div>
+      <div className="hidden md:flex fixed left-0">
         <Sidebar />
       </div>
-      <div>
+      <div className="md:ml-16">
         <Navbar />
-        <div className="flex flex-wrap gap-10 justify-around items-center mx-5  ">
+        <p className="w-full flex justify-center items-center p-28 text-7xl ">
+          {name}
+        </p>
+        <p className="w-full flex justify-start items-center md:p-10 text-4xl ">
+          Risultati 1,364
+        </p>
+        <div className="flex flex-wrap gap-20 justify-around items-center m-5  ">
           {imagesData?.map((data, index) => (
             <ProductCard
               key={index}

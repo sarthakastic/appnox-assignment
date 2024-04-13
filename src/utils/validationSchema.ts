@@ -31,7 +31,7 @@ const PhoneSchema = z
   .nonempty({ message: "PhoneNumber is required" })
   .regex(phoneRegex, "Invalid Number!");
 
-export const SignUpSchema = z.object({
+export const RegisterSchema = z.object({
   email: z.string().email().nonempty(),
   dropdownData: z.string().nonempty({ message: "dropdown data is required" }),
   name: z.string().nonempty({ message: "Name is required" }),
