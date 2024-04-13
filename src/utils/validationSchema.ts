@@ -8,11 +8,11 @@ const PhoneSchema = z
 
 export const RegisterSchema = z.object({
   email: z.string().email().nonempty(),
-  dropdownData: z.string().nonempty({ message: "dropdown data is required" }),
+  dropdownData: z.string().nonempty({ message: "Dropdown Data is required" }),
   name: z.string().nonempty({ message: "Name is required" }),
   lastname: z.string().nonempty({ message: "Last Name is required" }),
   phone: PhoneSchema,
   additionalData: z
     .string()
-    .nonempty({ message: "Additional Datais required" }),
+    .nonempty({ message: "Additional Data is required" }),
 });
