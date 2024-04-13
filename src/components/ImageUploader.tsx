@@ -1,30 +1,35 @@
+import React from "react";
 import { Trash } from "lucide-react";
 
-const ImageUploader = ({
+interface ImageUploaderProps {
+  images: string[];
+  setImages: React.Dispatch<React.SetStateAction<string[]>>;
+}
+
+const ImageUploader: React.FC<ImageUploaderProps> = ({
   images,
   setImages,
-}: {
-  images: any;
-  setImages: any;
-}) => {
-  const handleImageChange = (e: any) => {
+}: ImageUploaderProps) => {
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const fileList = e.target.files;
-    const newImages = Array.from(fileList).map((file: any) =>
-      URL.createObjectURL(file)
-    );
-    setImages([...images, ...newImages]);
+    if (fileList) {
+      const newImages = Array.from(fileList).map((file: File) =>
+        URL.createObjectURL(file)
+      );
+      setImages((prevImages) => [...prevImages, ...newImages]);
+    }
   };
 
-  const handleImageDelete = (index: any) => {
+  const handleImageDelete = (index: number) => {
     const newImages = [...images];
     newImages.splice(index, 1);
     setImages(newImages);
   };
 
   return (
-    <div className="flex ">
+    <div className="flex">
       <div
-        className={`relative border-dashed border-2 border-[#A7A6A6]  min-h-40 min-w-40 bg-[#F6F6F6] flex items-center justify-center ${
+        className={`relative border-dashed border-2 border-stone  min-h-40 min-w-40 bg-beige flex items-center justify-center ${
           images.length === 0 ? "w-full" : "w-40"
         } `}
       >
@@ -33,11 +38,11 @@ const ImageUploader = ({
           className="cursor-pointer absolute inset-0 flex items-center justify-center"
         >
           {images.length === 0 ? (
-            <p className="text-[#A7A6A6]">CARCIA IMAGINI</p>
+            <p className="text-stone">CARCIA IMAGINI</p>
           ) : (
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-16 w-16 text-[#A7A6A6]"
+              className="h-16 w-16 text-stone"
               viewBox="0 0 20 20"
               fill="currentColor"
             >
@@ -81,7 +86,7 @@ const ImageUploader = ({
           id="image-container"
           className="flex overflow-x-scroll flex-nowrap h-full max-w-72 xl:max-w-[640px] "
         >
-          {images.map((image: any, index: any) => (
+          {images.map((image: string, index: number) => (
             <div key={index} className=" image-item w-40">
               <img
                 src={image}

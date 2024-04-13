@@ -1,10 +1,10 @@
 import "./App.css";
 import Contact from "./components/Contact";
-import { AtSign, Check, MessageCircle } from "lucide-react";
+import { AtSign, MessageCircle } from "lucide-react";
 import Sidebar from "./components/Sidebar";
 import Register from "../src/components/Register";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import FormSubmitted from "./components/FormSubmitted";
 
 function App() {
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -15,16 +15,7 @@ function App() {
         <Sidebar />
       </div>
       {isSubmitted ? (
-        <div className="flex flex-col w-screen h-screen justify-center items-center">
-          <div className="border-2 rounded-full p-4 ">
-            <Check />
-          </div>
-          <h4>Message Inviato</h4>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-          <Link className="border rounded-full " to="/search">
-            Chuidi
-          </Link>
-        </div>
+        <FormSubmitted />
       ) : (
         <>
           <div className=" w-screen md:w-full  md:ml-16 ">

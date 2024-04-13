@@ -1,6 +1,7 @@
 import { Menu, Search, SquareArrowRight } from "lucide-react";
 import { useState } from "react";
 import SideNavBar from "./SideNavBar";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [showSideNav, setShowSideNav] = useState(false);
@@ -8,9 +9,11 @@ const Navbar = () => {
   return (
     <>
       {showSideNav && <SideNavBar setShowSideNav={setShowSideNav} />}
-      <div className="flex justify-between items-center mx-5 h-10 border-b border-[#D6D6D6] font-inter  ">
+      <div className="flex justify-between items-center mx-5 h-10 border-b border-powder font-inter  ">
         <div>
-          <h1 className="font-dmserif">Mediartrade</h1>
+          <Link to={"/"} className="font-dmserif">
+            Mediartrade
+          </Link>
         </div>
         <div className="hidden md:flex">
           <ul className="flex justify-around items-center gap-10">
@@ -25,7 +28,9 @@ const Navbar = () => {
               </select>
             </li>
             <li>
-              <Search />
+              <Link to="/search">
+                <Search />
+              </Link>
             </li>
           </ul>
         </div>
@@ -35,7 +40,9 @@ const Navbar = () => {
               <SquareArrowRight />
             </li>
             <li>
-              <Search />
+              <Link to="/search">
+                <Search />
+              </Link>
             </li>
             <li>
               <Menu

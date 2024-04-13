@@ -3,6 +3,11 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      colors: {
+        beige: "#F6F6F6",
+        stone: "#A7A6A6",
+        powder: "#D6D6D6",
+      },
       animation: {
         slide: "slideIn 0.5s ease-in-out",
       },

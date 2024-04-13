@@ -1,19 +1,17 @@
-// Native Imports
-import { useState } from "react";
-
-// Dependency Imports
+import { useState, ChangeEvent } from "react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SubmitHandler, useForm } from "react-hook-form";
-
-// Redux Imports
-
 import { RegisterSchema } from "../utils/validationSchema";
 import ImageUploader from "./ImageUploader";
 
 type SignUpFields = z.infer<typeof RegisterSchema>;
 
-const Register = ({ setIsSubmitted }: { setIsSubmitted: any }) => {
+const Register = ({
+  setIsSubmitted,
+}: {
+  setIsSubmitted: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
   const {
     register,
     handleSubmit,
@@ -23,13 +21,11 @@ const Register = ({ setIsSubmitted }: { setIsSubmitted: any }) => {
   });
 
   const [phoneNumber, setPhoneNumber] = useState("");
-  const [images, setImages] = useState<any>([]);
+  const [images, setImages] = useState<string[]>([]);
 
-  const formatPhoneNumber = (value: any) => {
-    // Remove all non-numeric characters from the input value
+  const formatPhoneNumber = (value: string) => {
     let numericValue = value.replace(/\D/g, "");
 
-    // Format the numeric value with space
     let formattedValue = "";
     for (let i = 0; i < numericValue.length; i++) {
       if (i === 4) {
@@ -41,7 +37,7 @@ const Register = ({ setIsSubmitted }: { setIsSubmitted: any }) => {
     return formattedValue;
   };
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
     const formattedValue = formatPhoneNumber(inputValue);
     setPhoneNumber(formattedValue);
@@ -54,27 +50,25 @@ const Register = ({ setIsSubmitted }: { setIsSubmitted: any }) => {
 
   return (
     <div className="w-full h-full  flex flex-col items-center justify-center gap-8 p-10 ">
-      {/* Title */}
       <div className="align-middle text-center">
         <h4 className="my-2 md:mx-16 text-4xl md:text-6xl font-dmserif ">
           Contattaci
         </h4>
       </div>
 
-      {/* Input Form */}
       <form
         className="flex flex-col w-full md:w-4/5   "
         onSubmit={handleSubmit(onSubmit)}
       >
         <div className="w-full flex flex-col md:flex-row gap-4 my-2  ">
           <input
-            className="md:w-4/5 h-10 focus:outline-none bg-[#F6F6F6] rounded-lg  px-4 "
+            className="md:w-4/5 h-10 focus:outline-none bg-beige rounded-lg  px-4 "
             {...register("name")}
             type="text"
             placeholder="Nome"
           />
           <input
-            className="md:w-4/5 h-10 focus:outline-none bg-[#F6F6F6] rounded-lg  px-4 "
+            className="md:w-4/5 h-10 focus:outline-none bg-beige rounded-lg  px-4 "
             {...register("lastname")}
             type="text"
             placeholder="Cognome"
@@ -86,14 +80,14 @@ const Register = ({ setIsSubmitted }: { setIsSubmitted: any }) => {
         )}
         <div className="w-full flex flex-col md:flex-row gap-4  my-2 ">
           <input
-            className="w-full h-10 focus:outline-none bg-[#F6F6F6] rounded-lg px-4"
+            className="w-full h-10 focus:outline-none bg-beige rounded-lg px-4"
             {...register("email")}
             type="email"
             placeholder="Email"
           />
 
           <input
-            className="w-full h-10 focus:outline-none bg-[#F6F6F6] rounded-lg px-4"
+            className="w-full h-10 focus:outline-none bg-beige rounded-lg px-4"
             {...register("phone")}
             value={phoneNumber}
             onChange={handleChange}
@@ -110,9 +104,9 @@ const Register = ({ setIsSubmitted }: { setIsSubmitted: any }) => {
           <div className="text-red-500">{errors.phone.message}</div>
         )}
 
-        <div className="w-full flex bg-[#F6F6F6] items-center rounded-lg px-4 my-2 ">
+        <div className="w-full flex bg-beige items-center rounded-lg px-4 my-2 ">
           <select
-            className="w-full h-10 focus:outline-none bg-[#F6F6F6] rounded-lg"
+            className="w-full h-10 focus:outline-none bg-beige rounded-lg"
             {...register("dropdownData")}
           >
             {" "}
@@ -128,7 +122,7 @@ const Register = ({ setIsSubmitted }: { setIsSubmitted: any }) => {
         )}
 
         <textarea
-          className="bg-[#F6F6F6] px-4 my-2 mb-4 rounded-lg "
+          className="bg-beige px-4 my-2 mb-4 rounded-lg "
           {...register("additionalData")}
           placeholder="Come possiamo aiutarla?"
           rows={4}

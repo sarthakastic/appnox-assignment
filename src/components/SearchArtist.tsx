@@ -42,7 +42,7 @@ const SearchArtist: React.FC = () => {
         placeholder="Cerca"
         ref={inputRef}
         className={`border-b  w-full rounded px-4 py-2 my-2 focus:outline-none text-6xl md:text-9xl placeholder-black opacity-16 ${
-          searchQuery.length > 0 ? "border-black" : "border-[#D6D6D6]"
+          searchQuery.length > 0 ? "border-black" : "border-powder"
         } `}
       />
 
@@ -75,7 +75,7 @@ const SearchArtist: React.FC = () => {
             className={`px-4 py-2 m-1 text-2xl md:text-7xl rounded border-b border-gray-300 p-5 my-10 placeholder-black  ${
               matchedNames.includes(name) && searchQuery
                 ? "text-black"
-                : "text-[#D6D6D6]"
+                : "text-powder"
             }`}
             onClick={() => handleArtist(name)}
           >

@@ -1,6 +1,10 @@
 import { X } from "lucide-react";
 
-const SideNavBar = ({ setShowSideNav }: { setShowSideNav: any }) => {
+const SideNavBar = ({
+  setShowSideNav,
+}: {
+  setShowSideNav: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
   return (
     <div className="fixed right-0 w-screen h-screen animate-slide bg-white z-50">
       <div
