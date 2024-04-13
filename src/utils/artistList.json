@@ -1,0 +1,39 @@
+[
+    {
+        "category": "Tutte",
+        "artistName": [
+            "Giorgio De Chirico",
+            "Salvador Dalì",
+            "Andy Warhol",
+            "Gennaro Guttuso"
+        ]
+    },
+    {
+        "category": "Arte",
+        "artistName": [
+            "Salvador Dalì",
+            "Andy Warhol"
+        ]
+    },
+    {
+        "category": "Orologi",
+        "artistName": [
+            "Salvador Dalì",
+            "Giorgio De Chirico"
+        ]
+    },
+    {
+        "category": "Gioielli",
+        "artistName": [
+            "Giorgio De Chirico",
+            "Gennaro Guttuso"
+        ]
+    },
+    {
+        "category": "Design",
+        "artistName": [
+            "Gennaro Guttuso",
+            "Andy Warhol"
+        ]
+    }
+]
