@@ -12,7 +12,6 @@ export default {
         slide: "slideIn 0.5s ease-in-out",
       },
 
-      // that is actual animation
       keyframes: {
         slideIn: {
           "0%": { transform: "translateX(1000px)" },
