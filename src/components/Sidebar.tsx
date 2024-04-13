@@ -5,8 +5,12 @@ import {
   MonitorPlay,
   SquareArrowRight,
 } from "lucide-react";
+import { useLocation } from "react-router-dom";
 
 const Sidebar = () => {
+  const location = useLocation();
+  console.log(location.pathname);
+
   return (
     <div className=" h-screen w-16  flex flex-col justify-between items-center px-5 py-2 border-r">
       <div className="">
@@ -23,7 +27,12 @@ const Sidebar = () => {
         <CircleHelp />
       </div>
       <div>
-        <MessageSquareMore className="bg-black text-white rounded-full p-1" />
+        <MessageSquareMore
+          className={`${
+            !location.pathname.includes("results") &&
+            "bg-black text-white rounded-full p-1"
+          } `}
+        />
       </div>
     </div>
   );
