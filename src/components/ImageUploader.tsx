@@ -60,7 +60,7 @@ const ImageUploader = ({
       <div
         className={` ${
           images.length === 0 ? "hidden" : "flex"
-        } overflow-x-scroll  min-h-40 min-w-40   h-40 `}
+        } overflow-x-scroll  min-h-40 min-w-40 max-w-full   h-40 `}
       >
         {images.length > 0 && (
           <div
@@ -79,7 +79,7 @@ const ImageUploader = ({
         )}
         <div
           id="image-container"
-          className="flex overflow-x-scroll flex-nowrap h-full"
+          className="flex overflow-x-scroll flex-nowrap h-full max-w-72 xl:max-w-[640px] "
         >
           {images.map((image: any, index: any) => (
             <div key={index} className=" image-item w-40">
@@ -104,7 +104,7 @@ const ImageUploader = ({
             onClick={() => {
               const container = document.getElementById("image-container");
               if (container) {
-                container.scrollLeft += 100; // Adjust the scroll amount as needed
+                container.scrollLeft += 100;
               }
             }}
           >

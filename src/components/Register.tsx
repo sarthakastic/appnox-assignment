@@ -56,7 +56,9 @@ const Register = ({ setIsSubmitted }: { setIsSubmitted: any }) => {
     <div className="w-full h-full  flex flex-col items-center justify-center gap-8 p-10 ">
       {/* Title */}
       <div className="align-middle text-center">
-        <h4 className="my-2 md:mx-16 ">Contattaci</h4>
+        <h4 className="my-2 md:mx-16 text-4xl md:text-6xl font-dmserif ">
+          Contattaci
+        </h4>
       </div>
 
       {/* Input Form */}
@@ -78,9 +80,7 @@ const Register = ({ setIsSubmitted }: { setIsSubmitted: any }) => {
             placeholder="Cognome"
           />
         </div>
-        {errors.name && (
-          <div className="text-red-500">{errors.name.message}</div>
-        )}
+
         {errors.lastname && (
           <div className="text-red-500">{errors.lastname.message}</div>
         )}
@@ -141,7 +141,9 @@ const Register = ({ setIsSubmitted }: { setIsSubmitted: any }) => {
         {errors.root && (
           <div className="text-red-500">{errors.root.message}</div>
         )}
-        <ImageUploader images={images} setImages={setImages} />
+        <div className="my-2 w-full  ">
+          <ImageUploader images={images} setImages={setImages} />
+        </div>
         <button
           type="submit"
           className="bg-black text-white rounded-full w-full p-2 mt-10 "

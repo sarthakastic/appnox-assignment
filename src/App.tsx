@@ -2,7 +2,6 @@ import "./App.css";
 import Contact from "./components/Contact";
 import { AtSign, Check, MessageCircle } from "lucide-react";
 import Sidebar from "./components/Sidebar";
-import logo from "./assets/menu_back.png";
 import Register from "../src/components/Register";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -11,7 +10,7 @@ function App() {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   return (
-    <div className="flex flex-col md:flex-row w-screen justify-around  ">
+    <div className="flex flex-col md:flex-row w-screen justify-around font-inter  ">
       <div className="hidden  fixed md:flex max-w-16 w-fit left-0  ">
         <Sidebar />
       </div>
@@ -28,7 +27,7 @@ function App() {
         </div>
       ) : (
         <>
-          <div className=" w-screen md:w-full md:ml-16 ">
+          <div className=" w-screen md:w-full  md:ml-16 ">
             <Register setIsSubmitted={setIsSubmitted} />
           </div>
           <div className="w-screen h-screen md:w-1/3 flex flex-col ">

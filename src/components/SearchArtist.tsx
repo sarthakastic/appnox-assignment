@@ -33,10 +33,6 @@ const SearchArtist: React.FC = () => {
     setSearchQuery(e.target.value);
   };
 
-  const handleInputFocus = () => {
-    inputRef.current?.focus();
-  };
-
   return (
     <div>
       <input
